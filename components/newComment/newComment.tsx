@@ -14,12 +14,11 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { useRouter } from "next/navigation"
-import { useState } from "react"
 import { Textarea } from "../ui/textarea"
+import { PrismaClient } from '@prisma/client'
 
 const commentValidator = z.object({
-    user: z.string().nonempty("User is required"),
+  username: z.string().nonempty("User is required"),
     comment: z.string().nonempty("Comment is required"),
     })
 
@@ -27,17 +26,19 @@ const commentValidator = z.object({
 
 
 const NewComment = () => {
+  const prisma = new PrismaClient()
     const form = useForm<z.infer<typeof commentValidator>>({
         resolver: zodResolver(commentValidator),
         defaultValues: {
-            user: "",
+          username: "",
             comment: "",
         },
       })
 
       const onSubmit = async(values:z.infer<typeof commentValidator>)=>{
+        alert("Saving comment")
         try {
-      
+         
        
       } catch (error:any) {
         console.log(error);
@@ -53,7 +54,7 @@ const NewComment = () => {
       <div className=" min-w-[400px] flex flex-col  gap-y-5">
               <FormField
                 control={form.control}
-                name="user"
+                name="username"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="pb-1 font-semibold text-[14px]">Username </FormLabel>

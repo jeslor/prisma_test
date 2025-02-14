@@ -2,7 +2,10 @@ import CanvasBackground from "@/components/background/canvasBackground"
 import NewComment from "@/components/newComment/newComment"
 
 
+
 const page = () => {
+
+
   return (
     <div className="relative h-screen w-screen bg-[#0f0f0f] flex flex-col justify-between">
       <CanvasBackground/>
