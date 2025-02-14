@@ -37,11 +37,12 @@ const NewComment = () => {
       })
 
       const onSubmit = async(values:z.infer<typeof commentValidator>)=>{
-        alert("Saving comment")
         try {
          const commentSaved = await saveComment(values)
          if(commentSaved.status === 200){
            alert("Comment saved")
+           form.reset()
+           window.location.reload()
          }else{
           throw new Error("Error saving comment")
          }
