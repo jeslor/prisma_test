@@ -1,6 +1,7 @@
 "use server";
 import { PrismaClient } from '@prisma/client';
 
+
 export const saveComment = async (values: { username: string; comment: string }) => {
     const prisma = new PrismaClient();
     try {
@@ -10,10 +11,10 @@ export const saveComment = async (values: { username: string; comment: string })
                 comment: values.comment,
             },
         });
-        return JSON.parse(JSON.stringify({message: "Comment saved", data:savedComment}));
+        return JSON.parse(JSON.stringify({message: "Comment saved", data:savedComment,status:200}));
 
     } catch (error:any) {
         console.log(error);
-        return JSON.parse(JSON.stringify({message: "Error saving comment", data:error.message}));
+        return JSON.parse(JSON.stringify({message: "Error saving comment", data:error.message,status:500}));
     }
     };

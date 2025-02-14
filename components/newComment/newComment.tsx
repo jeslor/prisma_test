@@ -16,6 +16,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Textarea } from "../ui/textarea"
 import { PrismaClient } from '@prisma/client'
+import { saveComment } from "@/lib/comment.actions"
 
 const commentValidator = z.object({
   username: z.string().nonempty("User is required"),
@@ -38,7 +39,13 @@ const NewComment = () => {
       const onSubmit = async(values:z.infer<typeof commentValidator>)=>{
         alert("Saving comment")
         try {
-         
+         const commentSaved = await saveComment(values)
+         if(commentSaved.status === 200){
+           alert("Comment saved")
+         }else{
+          throw new Error("Error saving comment")
+         }
+
        
       } catch (error:any) {
         console.log(error);
