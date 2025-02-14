@@ -56,7 +56,7 @@ const NewComment = () => {
                 name="user"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="pb-1 font-semibold text-[14px]">username </FormLabel>
+                    <FormLabel className="pb-1 font-semibold text-[14px]">Username </FormLabel>
                     <FormControl>
                       <Input  type="text"  autoComplete="none" className="!mt-0 border-[2px] border-gray-300" placeholder="" {...field} />
                     </FormControl>
@@ -81,7 +81,7 @@ const NewComment = () => {
               />
                
               </div>
-              <button className="py-2 px-5 bg-slate-600">Save comment</button>
+              <button className="py-2 px-5 bg-slate-600 font-semibold text-slate-100 rounded-xl hover:bg-slate-900">Save comment</button>
         </form>
     </Form>
     </>
